@@ -4,8 +4,6 @@ public class MovieBuilder {
 
 	private String title;
 	
-	private Price price;
-	
 	public MovieBuilder() {
 		title = "movieName";
 	}
@@ -16,18 +14,15 @@ public class MovieBuilder {
 	}
 	
 	public ChildrenMovie buildChildrenMovie() {
-		this.price = new ChildrenPrice();
-		return new ChildrenMovie(title, price);
+		return new ChildrenMovie(title);
 	}
 	
 	public RegularMovie buildRegularMovie() {
-		this.price = new RegularPrice();
-		return new RegularMovie(title, price);
+		return new RegularMovie(title);
 	}
 	
 	public NewReleaseMovie buildNewReleaseMovie() {
-		this.price = new NewReleasePrice();
-		return new NewReleaseMovie(title, price);
+		return new NewReleaseMovie(title);
 	}
 
 }
