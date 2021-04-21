@@ -15,22 +15,19 @@ public class MovieBuilder {
 		return this;
 	}
 	
-	public MovieBuilder childrens() {
+	public ChildrenMovie buildChildrenMovie() {
 		this.price = new ChildrenPrice();
-		return this;
+		return new ChildrenMovie(title, price);
 	}
 	
-	public MovieBuilder regular() {
+	public RegularMovie buildRegularMovie() {
 		this.price = new RegularPrice();
-		return this;
+		return new RegularMovie(title, price);
 	}
 	
-	public MovieBuilder newRelease() {
+	public NewReleaseMovie buildNewReleaseMovie() {
 		this.price = new NewReleasePrice();
-		return this;
+		return new NewReleaseMovie(title, price);
 	}
-	
-	public Movie build() {
-		return new Movie(title, price);
-	}
+
 }
