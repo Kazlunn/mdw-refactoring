@@ -1,6 +1,6 @@
 package usantatecla.movies.v21;
 
-public class Movie {
+public abstract class Movie {
 
 	private String title;
 	
@@ -11,9 +11,7 @@ public class Movie {
 		this.price = price;
 	}
 	
-	public double getCharge(int daysRented) {
-		return price.getCharge(daysRented);
-	}
+	public abstract double getCharge(int daysRented);
 	
 	public int getFrequentRenterPoints(int daysRented) {
 		return price.getFrequentRenterPoints(daysRented);
