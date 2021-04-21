@@ -27,23 +27,15 @@ public class Customer {
 		Iterator<Rental> rentals = this.rentals.iterator();
 		String result = "Rental Record for " + this.getName() + "\n";
 		double totalCharge = 0;
+		int totalFrequentRenterPoints = 0;
 		while (rentals.hasNext()) {
 			Rental rental = rentals.next();
 			result += "\t" + rental.getMovie().getTitle() + "\t" + String.valueOf(rental.getCharge()) + "\n";
 			totalCharge += rental.getCharge();
+			totalFrequentRenterPoints += rental.getFrequentRenterPoints();
 		}
 		result += "Amount owed is " + totalCharge + "\n";
-		result += "You earned " + String.valueOf(this.getTotalFrequentRenterPoints()) + " frequent renter points";
-		return result;
-	}
-	
-	private int getTotalFrequentRenterPoints() {
-		int result = 0;
-		Iterator<Rental> rentals = this.rentals.iterator();
-		while (rentals.hasNext()) {
-			Rental each = rentals.next();
-			result += each.getFrequentRenterPoints();
-		}
+		result += "You earned " + totalFrequentRenterPoints + " frequent renter points";
 		return result;
 	}
 
