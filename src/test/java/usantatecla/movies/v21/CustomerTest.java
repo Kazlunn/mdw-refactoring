@@ -51,6 +51,17 @@ public class CustomerTest {
 	}
 
 	@Test
+	public void newReleaseMovieFrequentPointsBelowThresholdTest() {
+		String movieName = "movieName";
+		Movie movie = new MovieBuilder().title(movieName).buildNewReleaseMovie();
+		Rental rental = new RentalBuilder().movie(movie).daysRented(0).build();
+		String customerName = "customerName";
+		Customer customer = new CustomerBuilder().name(customerName).rental(rental).build();
+
+		assertEquals(customer.getRentals().get(0).getFrequentRenterPoints(), 1);
+	}
+
+	@Test
 	public void withoutRentalsTest() {
 		String customerName = "customerName";
 		Customer customer = new CustomerBuilder().name(customerName).build();
