@@ -7,6 +7,17 @@ import org.junit.Test;
 public class CustomerTest {
 
 	@Test
+	public void regularMovieChargeTest() {
+		String movieName = "movieName";
+		Movie movie = new MovieBuilder().title(movieName).buildRegularMovie();
+		Rental rental = new RentalBuilder().movie(movie).daysRented(3).build();
+		String customerName = "customerName";
+		Customer customer = new CustomerBuilder().name(customerName).rental(rental).build();
+
+		assertEquals(customer.getRentals().get(0).getCharge(), 3.5, 0);
+	}
+
+	@Test
 	public void withoutRentalsTest() {
 		String customerName = "customerName";
 		Customer customer = new CustomerBuilder().name(customerName).build();
@@ -154,7 +165,7 @@ public class CustomerTest {
 	}
 	
 	@Test
-	public void rentalTest() {
+	public void statementTest() {
 		String regularMovieName = "regularMovieName";
 		Movie regularMovie = new MovieBuilder().title(regularMovieName).buildRegularMovie();
 		Rental regularRental = new RentalBuilder().movie(regularMovie).daysRented(10).build();

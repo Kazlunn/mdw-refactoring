@@ -23,6 +23,10 @@ public class Customer {
 		return name;
 	}
 
+	public List<Rental> getRentals() {
+		return this.rentals;
+	}
+
 	public String statement() {
 		Iterator<Rental> rentals = this.rentals.iterator();
 		String result = "Rental Record for " + this.getName() + "\n";
