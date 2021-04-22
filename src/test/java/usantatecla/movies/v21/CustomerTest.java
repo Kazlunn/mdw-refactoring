@@ -7,7 +7,18 @@ import org.junit.Test;
 public class CustomerTest {
 
 	@Test
-	public void regularMovieChargeTest() {
+	public void regularMovieChargeDaysRentedBelowThresholdTest() {
+		String movieName = "movieName";
+		Movie movie = new MovieBuilder().title(movieName).buildRegularMovie();
+		Rental rental = new RentalBuilder().movie(movie).daysRented(0).build();
+		String customerName = "customerName";
+		Customer customer = new CustomerBuilder().name(customerName).rental(rental).build();
+
+		assertEquals(customer.getRentals().get(0).getCharge(), 2.0, 0);
+	}
+
+	@Test
+	public void regularMovieChargeDaysRentedAboveThresholdTest() {
 		String movieName = "movieName";
 		Movie movie = new MovieBuilder().title(movieName).buildRegularMovie();
 		Rental rental = new RentalBuilder().movie(movie).daysRented(3).build();
