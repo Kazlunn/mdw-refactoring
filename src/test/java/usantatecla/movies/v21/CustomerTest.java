@@ -29,6 +29,17 @@ public class CustomerTest {
 	}
 
 	@Test
+	public void childrenMovieChargeBelowThresholdTest() {
+		String movieName = "movieName";
+		Movie movie = new MovieBuilder().title(movieName).buildChildrenMovie();
+		Rental rental = new RentalBuilder().movie(movie).daysRented(0).build();
+		String customerName = "customerName";
+		Customer customer = new CustomerBuilder().name(customerName).rental(rental).build();
+
+		assertEquals(customer.getRentals().get(0).getCharge(), 1.5, 0);
+	}
+
+	@Test
 	public void childrenMovieChargeAboveThresholdTest() {
 		String movieName = "movieName";
 		Movie movie = new MovieBuilder().title(movieName).buildChildrenMovie();
